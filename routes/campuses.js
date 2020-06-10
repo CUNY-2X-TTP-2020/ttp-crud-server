@@ -26,13 +26,34 @@ const campuses = [
   },
 ];
 
-/* GET users listing. */
-router.get("/", function (req, res, next) {
+/* GET all campuses. */
+router.get("/", (req, res, next) => {
   // Campus.findAll()
   //   .then((campuses) => res.json(campuses))
   //   .catch((err) => console.log(err));
-
   res.json(campuses);
+});
+
+// Route to serve single campus based on its id
+router.get("/:id", (req, res, next) => {
+  const campus = campuses.find((campus) => campus.id === req.params.id);
+
+  res.json(campus);
+});
+
+// Route to handle adding a campus
+router.post("/", (req, res, next) => {
+  res.send("Route to handle adding a campus");
+});
+
+// Route to handle editing a campus
+router.put("/:id", (req, res, next) => {
+  res.send("Route to handle editing a campus");
+});
+
+// Route to handle removing a campus
+router.delete("/:id", (req, res, next) => {
+  res.send("Route to handle removing a campus");
 });
 
 module.exports = router;
